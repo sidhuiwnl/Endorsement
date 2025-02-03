@@ -3,7 +3,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/vsDark";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
-import { useSession } from "@/app/lib/auth-client";
+import { useSession } from "@/utils/auth-client";
 
 
 export default function CodePreview() {

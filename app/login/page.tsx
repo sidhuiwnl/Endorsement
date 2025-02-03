@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "@/app/lib/auth-client";
+import { signIn } from "@/utils/auth-client";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 

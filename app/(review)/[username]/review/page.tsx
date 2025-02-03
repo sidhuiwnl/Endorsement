@@ -13,7 +13,7 @@ import {
     DrawerDescription, DrawerClose
 } from "@/components/ui/drawer";
 
-import {useSession} from "@/app/lib/auth-client";
+import {useSession} from "@/utils/auth-client";
 import Link from "next/link";
 import CustomUploadButton from "@/components/upload-button";
 

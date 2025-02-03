@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { getReviews } from "@/server/queries";
-import { useSession } from "@/app/lib/auth-client";
+import { useSession } from "@/utils/auth-client";
 import WallOfSkeletonComp from "./skeletons/WallOffameSkeleton";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";

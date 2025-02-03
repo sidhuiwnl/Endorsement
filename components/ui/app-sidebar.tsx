@@ -10,7 +10,7 @@ import {
     Mail,
     LayoutIcon
 } from "lucide-react";
-import { useSession } from "@/app/lib/auth-client";
+import { useSession } from "@/utils/auth-client";
 import Link from "next/link";
 import {
   Sidebar,

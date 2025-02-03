@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Review from "@/components/ReviewComponent";
-import { useSession } from "@/app/lib/auth-client";
+import { useSession } from "@/utils/auth-client";
 
 
 

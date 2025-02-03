@@ -1,4 +1,4 @@
-import { signOut } from "@/app/lib/auth-client";
+import { signOut } from "@/utils/auth-client";
 import { useRouter } from "next/navigation";
 
 export default function SignOut() {

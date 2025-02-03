@@ -1,4 +1,4 @@
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/utils/utils";
 import Image from "next/image";
 import { Badge } from "./badge";
 import { useState } from "react";

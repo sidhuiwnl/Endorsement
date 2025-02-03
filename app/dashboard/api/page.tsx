@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSession } from "@/app/lib/auth-client";
+import { useSession } from "@/utils/auth-client";
 import { Eye, Copy } from "lucide-react";
 import { toast } from "sonner";
 

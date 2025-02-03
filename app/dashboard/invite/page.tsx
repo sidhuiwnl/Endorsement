@@ -1,7 +1,7 @@
 "use client"
 
 import EmailTemplate from "@/components/EmailTemplate";
-import {useSession} from "@/app/lib/auth-client";
+import {useSession} from "@/utils/auth-client";
 import {Suspense} from "react";
 
 

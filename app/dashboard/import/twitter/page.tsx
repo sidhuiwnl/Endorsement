@@ -12,7 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { XIcon } from "lucide-react";
 import { Trash2 } from "lucide-react";
-import { useSession } from "@/app/lib/auth-client";
+import { useSession } from "@/utils/auth-client";
 import { addTweet } from "@/server/queries";
 
 export default function TwitterInt() {

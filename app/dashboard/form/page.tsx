@@ -1,7 +1,7 @@
 "use client"
 
 import {CopyIcon} from "lucide-react";
-import {useSession} from "@/app/lib/auth-client";
+import {useSession} from "@/utils/auth-client";
 import {redirect} from "next/navigation";
 import { toast } from "sonner"
 

@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 import { User } from "better-auth";
 import {Templates} from "@prisma/client";
-import {generateRandomString} from "@/app/lib/utils";
+import {generateRandomString} from "@/utils/utils";
 import {revalidatePath} from "next/cache";
 
 export async function addTweet({

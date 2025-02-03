@@ -6,9 +6,9 @@ import { Upload, Star, Sparkles, ChevronRight, ChevronLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { cn } from "@/app/lib/utils"
+import { cn } from "@/utils/utils"
 import {addTweet} from "@/server/queries";
-import {useSession} from "@/app/lib/auth-client";
+import {useSession} from "@/utils/auth-client";
 
 const emojis = [
     { emoji: "😠", label: "Angry", color: "from-red-500" },

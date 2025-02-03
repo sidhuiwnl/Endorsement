@@ -1,6 +1,6 @@
 "use client"
 
-import { useSession } from "@/app/lib/auth-client"
+import { useSession } from "@/utils/auth-client"
 
 export default function UserSpace(){
   const session = useSession();
