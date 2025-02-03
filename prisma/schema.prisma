@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id
+  sessions Session[]
+
+  tweetReviews  TweetReview[]
+  name          String
+  email         String
+  emailVerified Boolean
+  image         String?
+  createdAt     DateTime
+  updatedAt     DateTime
+  account       Account[]
+  templates     Templates[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+
+  user      User    @relation(references: [id], fields: [userId], onDelete: Cascade)
+  ipAddress String?
+  userAgent String?
+
+  @@map("session")
+}
+
+model Account {
+  id           String    @id
+  accountId    String
+  providerId   String
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken  String?
+  refreshToken String?
+  idToken      String?
+  expiresAt    DateTime?
+  password     String?
+
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+
+  @@map("verification")
+}
+
+model TweetReview {
+  id           String   @id
+  profile      String
+  username     String
+  handle       String?
+  jobTitle     String?
+  tweetContent String
+  verified     Boolean
+  userId       String
+  user         User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+  createdAt    DateTime
+  images       String[]
+  status       String   @default("pending")
+  rating       Int      @default(0)
+
+  @@map("tweetreview")
+}
+
+model Templates {
+  id           String   @id
+  templateName String   @default("Untitled")
+  sendersName  String
+  replyToEmail String
+  subject      String
+  body         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  placeholders String[]
+  userId       String
+  user         User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+  @@map("templates")
+}
