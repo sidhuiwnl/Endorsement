@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/utils/utils"
 import {addTweet} from "@/server/queries";
 import {useSession} from "@/utils/auth-client";
+import { toast } from "sonner"
 
 const emojis = [
     { emoji: "😠", label: "Angry", color: "from-red-500" },
@@ -34,22 +35,29 @@ export default function ReviewForm() {
 
     useEffect(() => {
         const url = localStorage.getItem("uploadedFileUrl");
-        setMediaFile(url);
+        setMediaFile(url ? url  : null);
         localStorage.removeItem("uploadedFileUrl");
     },[])
 
     async function handleSubmit() {
         if(user) {
-            await addTweet({
-               user,
-                username : formData.name,
-                handle : formData.jobTitle,
-                tweetContent : formData.review,
-                isVerified : false,
-                userImage : imagePreview || "",
-                mediaFiles : [mediaFile ?? ""] ,
-                rating : rating || 0
-            })
+            try {
+                await addTweet({
+                    user,
+                    username : formData.name,
+                    handle : formData.jobTitle,
+                    tweetContent : formData.review,
+                    isVerified : false,
+                    userImage : imagePreview || "",
+                    mediaFiles : mediaFile ? [mediaFile] : [] ,
+                    rating : rating || 0
+                })
+                toast.success("Thanks for your review!")
+            }catch(err) {
+                console.log(err);
+                toast.error("Failed to upload");
+            }
+
         }
 
     }
@@ -158,6 +166,7 @@ export default function ReviewForm() {
                                                 accept="image/*"
                                                 onChange={handleImageUpload}
                                                 className="absolute inset-0 w-24 h-24 opacity-0 cursor-pointer"
+                                                required={true}
                                             />
                                         </div>
                                     </div>
@@ -169,6 +178,7 @@ export default function ReviewForm() {
                                                 value={formData.name}
                                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                                 className="h-12"
+                                                required={true}
                                             />
                                         </div>
                                         <div>
@@ -177,6 +187,7 @@ export default function ReviewForm() {
                                                 value={formData.jobTitle}
                                                 onChange={(e) => setFormData({ ...formData, jobTitle: e.target.value })}
                                                 className="h-12"
+                                                required={true}
                                             />
                                         </div>
                                     </div>
@@ -247,10 +258,13 @@ export default function ReviewForm() {
                                 if (step < steps.length - 1) {
                                     setStep(step + 1)
                                 } else {
-
                                     handleSubmit()
                                 }
                             }}
+                            disabled={
+                                (step === 0 && (!imagePreview || !formData.name.trim() || !formData.jobTitle.trim())) ||
+                                (step === 1 && !formData.review.trim())
+                            }
                         >
                             {step === steps.length - 1 ? (
                                 <>
@@ -264,6 +278,7 @@ export default function ReviewForm() {
                                 </>
                             )}
                         </Button>
+
                     </motion.div>
                 </div>
             </motion.div>

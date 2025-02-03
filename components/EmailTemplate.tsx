@@ -20,7 +20,6 @@ import {
 import { getTemplates,deleteTemplate }from "@/server/queries";
 import { Templates } from "@prisma/client";
 import CreateTemplate from "@/components/CreateTemplate";
-import { toast } from "sonner"
 
 export default function EmailTemplate({ userId }: { userId: string }) {
 
@@ -44,7 +43,7 @@ export default function EmailTemplate({ userId }: { userId: string }) {
         const filteredTemplates = templates.filter( template => template.id !== templateId)
         setTemplates(filteredTemplates);
         setIsLoading(false);
-        toast.success("Template deleted successfully.");
+
 
         await deleteTemplate(userId,templateId);
 
@@ -168,7 +167,10 @@ export default function EmailTemplate({ userId }: { userId: string }) {
                                     <DropdownMenuSeparator />
                                     <DropdownMenuGroup>
                                         <DropdownMenuItem
-                                            onClick={() => deletingTemplate(template.id,template.userId)}
+                                            onClick={() => {
+                                                deletingTemplate(template.id,template.userId)
+
+                                            }}
                                             className="cursor-pointer text-red-600 focus:text-red-700">
                                             <Trash2 className="mr-2 h-4 w-4" />
                                             Delete

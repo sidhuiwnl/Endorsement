@@ -14,12 +14,14 @@ import { XIcon } from "lucide-react";
 import { Trash2 } from "lucide-react";
 import { useSession } from "@/utils/auth-client";
 import { addTweet } from "@/server/queries";
+import { useRouter } from 'next/navigation'
 
 export default function TwitterInt() {
   return <TwitterForm />;
 }
 
 function TwitterForm() {
+  const router = useRouter()
   const session = useSession();
   const user = session.data?.user;
 
@@ -66,6 +68,7 @@ function TwitterForm() {
           userImage: userImage ?? "",
           mediaFiles: mediaFiles ?? [],
         });
+        router.push("/dashboard/reviews");
       } catch (error) {
         console.error("Error adding tweet or uploading images:", error);
       }

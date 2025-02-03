@@ -30,6 +30,7 @@ import {
 import { AnimatedTooltip } from "./ui/animated-tooltip";
 import NoReviewMessage from "./NoReviewMessage";
 import TweetsDisplaySkeleton from "./skeletons/TweetDisplaySkeleton";
+import  {toast }  from  "sonner"
 
 interface TweetInfo {
   profile: string;
@@ -143,6 +144,17 @@ export default function TweetsDisplay({ userId, setTweetCount }: ReviewProps) {
     await updateTweetStatus(id, status);
   }
 
+  async function tweetDeleteFunction(id : string) {
+    setTweetsInfos((prevTweets) =>
+    prevTweets.filter((tweet) =>
+        tweet.id !== id
+    ))
+    toast.success("Tweet deleted successfully.");
+    const updateTweet = await deleteReview(id, userId);
+    setTweetsInfos(updateTweet);
+    setTweetCount(updateTweet.length);
+  }
+
   if (isLoading ) {
     return <TweetsDisplaySkeleton />;
   }
@@ -213,9 +225,7 @@ export default function TweetsDisplay({ userId, setTweetCount }: ReviewProps) {
                   handleApprovalChange(tweetsInfo.id, "Approved")
                 }
                 onDelete={async () => {
-                  const updateTweet = await deleteReview(tweetsInfo.id, userId);
-                  setTweetsInfos(updateTweet);
-                  setTweetCount(updateTweet.length);
+                  tweetDeleteFunction(tweetsInfo.id);
                 }}
                 onReject={() => {
                   handleRejectChange(tweetsInfo.id, "Rejected");

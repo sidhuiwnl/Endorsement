@@ -31,7 +31,7 @@ import {
 } from "./dropdown-menu";
 import Image from "next/image";
 import SignOut from "../Signout";
-
+import { toast } from "sonner"
 import {Label} from "@/components/ui/label";
 import {Button} from "@/components/ui/button";
 import {updateTemplate} from "@/server/queries";
@@ -219,6 +219,7 @@ export function TemplateSidebar({
           <Button
               onClick={async () => {
                 await updateTemplate(templateId, templateName, subject, body, user?.id,senderName,replyEmail)
+                toast.success("Template successfully updated")
               }}
           >Save Template</Button>
         </SidebarFooter>

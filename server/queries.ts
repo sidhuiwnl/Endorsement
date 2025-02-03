@@ -2,7 +2,7 @@
 
 import { client } from "@/utils/prisma";
 
-import { redirect } from "next/navigation";
+
 
 import { User } from "better-auth";
 import {Templates} from "@prisma/client";
@@ -49,7 +49,7 @@ export async function addTweet({
       },
     });
 
-    redirect("/dashboard/reviews");
+
   }
 }
 
