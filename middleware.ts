@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
   }
 
 
-  if (pathname === "/login" || pathname.startsWith("/public")) {
+  if (pathname === "/" || pathname === "/login" || pathname.startsWith("/public")) {
     return NextResponse.next();
   }
 
