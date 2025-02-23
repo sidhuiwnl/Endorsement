@@ -5,6 +5,8 @@ import { Eye, Code } from "lucide-react";
 import { useState } from "react";
 import CodePreview from "@/components/CodePreview";
 
+export const dynamic = "force-dynamic";
+
 export default function WallOfFame() {
   return (
     <div>

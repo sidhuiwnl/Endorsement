@@ -13,6 +13,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {useSearchParams} from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default function Page() {
 
 
