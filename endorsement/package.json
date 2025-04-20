@@ -1,0 +1,29 @@
+{
+  "name": "endorsement",
+  "version": "1.0.0",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
+    "autoprefixer": "^10.4.21",
+    "bun-types": "^1.2.8",
+    "postcss": "^8.5.3"
+  },
+  "scripts": {
+    "build": "bun run ./build.ts",
+    "dev": "bun run ./build.ts --watch",
+    "prepublishOnly": "bun run build"
+  },
+  "peerDependencies": {
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "lucide-react": "^0.487.0",
+    "next": "^15.2.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwind": "3"
+  }
+}

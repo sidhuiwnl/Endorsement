@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { getReviews } from "@/server/queries";
 import { useSession } from "@/utils/auth-client";
 import WallOfSkeletonComp from "./skeletons/WallOffameSkeleton";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import WallOfFameGrid from "@/components/WallOfFameGrid";
 
-interface TweetInfo {
+export interface TweetInfo {
   profile: string;
   username: string;
   handle: string | null;
@@ -83,18 +83,18 @@ export function LayoutGridDemo() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="h-screen">
-      <BentoGrid className="max-w-4xl mx-auto  mt-7">
+    <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-2">
         {tweetsInfos?.map((tweetsInfo, i) => (
-          <BentoGridItem
+          <WallOfFameGrid
             key={tweetsInfo.id}
             title={tweetsInfo.username}
+            handle={tweetsInfo.handle!}
+            userImage={tweetsInfo.profile}
             description={tweetsInfo.tweetContent}
             imageUrl={tweetsInfo.images[0]}
             className={i === 3 || i === 6 ? "md:col-span-2" : ""}
           />
         ))}
-      </BentoGrid>
     </div>
   );
 }
