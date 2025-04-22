@@ -101,7 +101,7 @@ function WallOfSkeletonComp() {
 function fetchReviews(userId) {
   return __async(this, null, function* () {
     try {
-      const response = yield fetch(`/api/testimonial?userId=${userId}`);
+      const response = yield fetch(`https://endorsement-nine.vercel.app/api/testimonial?userId=${userId}`);
       if (!response.ok) {
         throw new Error(`Failed to fetch reviews: ${response.status}`);
       }

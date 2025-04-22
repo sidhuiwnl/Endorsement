@@ -11,14 +11,14 @@ export default function CodePreview() {
   const session = useSession();
 
   const code = `
-    "use client";
+"use client"
 
-    import { WallOfLove } from "@sidharth1222/testi";
-    import "@sidharth1222/testi/dist/index.css"
+import {WallOfFame} from "endorsement";
+import "endorsement/src/styles.css"
 
-    export default function Wall() {
-        return <WallOfLove userId="${session.data?.user.id}"/>
-    }
+export default function Wall() {
+    return <WallOfFame userId="${session.data?.user.id}"/>
+}
 `;
 
   const handleCopy = () => {
@@ -27,7 +27,7 @@ export default function CodePreview() {
   };
 
   return (
-    <div className="relative bg-black min-h-[150px] rounded-lg p-1 mt-7 w-[900px]">
+    <div className="relative bg-neutral-800 min-h-[150px] rounded-lg p-1 mt-7 w-[900px]">
       <button
         onClick={handleCopy}
         className="absolute top-2 right-2   text-white p-2 rounded"

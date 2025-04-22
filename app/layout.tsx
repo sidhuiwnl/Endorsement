@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import {Toaster} from "@/components/ui/sonner";
 import "./globals.css";
 
-import { Plus_Jakarta_Sans } from "next/font/google";
+import {DM_Sans } from "next/font/google";
 
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Collect your reviews with ease and speed, and share them with the world",
 };
 
-const jakarta = Plus_Jakarta_Sans({
+const jakarta = DM_Sans({
   subsets: ["latin"],
   display: "swap",
 });

@@ -89,7 +89,7 @@ function WallOfSkeletonComp() {
 // Fetch reviews function
 async function fetchReviews(userId: string): Promise<TweetInfo[]> {
     try {
-        const response = await fetch(`/api/testimonial?userId=${userId}`);
+        const response = await fetch(`https://endorsement-nine.vercel.app/api/testimonial?userId=${userId}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch reviews: ${response.status}`);
         }
