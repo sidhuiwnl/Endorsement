@@ -2,7 +2,10 @@ import { Copy } from "lucide-react";
 import { toast } from "sonner";
 
 export default function NoReviewMessage() {
-  const url = "https://testimonial-vert.vercel.app/dashboard/import";
+
+
+  const url = `${window.location.origin}/dashboard/import`;
+
 
   function handleCopy() {
     if (url) {

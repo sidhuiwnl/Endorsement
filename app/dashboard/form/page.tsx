@@ -4,15 +4,20 @@ import {CopyIcon} from "lucide-react";
 import {useSession} from "@/utils/auth-client";
 import {redirect} from "next/navigation";
 import { toast } from "sonner"
+import {useEffect} from "react";
 
 export default function Form(){
     const session = useSession();
     const user = session?.data?.user;
     const username = user?.name.replace(/\s+/g,'').toLowerCase();
 
-    if(!user){
-        redirect("/login");
-    }
+
+    useEffect(() => {
+        if (!user) {
+            redirect("/login");
+        }
+    }, []);
+
     return (
         <div>
             <h1 className='text-4xl font-semibold tracking-tight'>Your Collections</h1>
@@ -22,13 +27,13 @@ export default function Form(){
                 <span
 
                     className="text-teal-700 font-medium"
-                >{`https://endorsement-nine.vercel.app/${username}/review`}</span>
+                >{`${window.location.origin}/${username}/review`}</span>
                 <CopyIcon
                     width={15}
                     height={15}
                     className="cursor-pointer "
                     onClick={() => {
-                        const link = `https://endorsement-nine.vercel.app/${username}/review`
+                        const link = `${window.location.origin}/${username}/review`
                         window.navigator.clipboard.writeText(link);
                         toast.success("The Link has been copied!");
                     }}

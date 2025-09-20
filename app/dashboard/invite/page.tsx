@@ -10,7 +10,7 @@ export default function EmailSection() {
     const session = useSession();
     const userId = session?.data?.user.id
 
-    console.log(userId);
+
     return(
         <div>
             <h1 className="text-4xl font-semibold tracking-tight">Invite Others To Review</h1>
